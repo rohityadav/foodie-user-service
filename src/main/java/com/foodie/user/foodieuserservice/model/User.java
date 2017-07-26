@@ -1,8 +1,11 @@
 package com.foodie.user.foodieuserservice.model;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -27,5 +30,14 @@ public class User implements Serializable{
         this.lastName = lastName;
         this.email = email;
         this.foodChoices = foodChoices;
+    }
+
+
+    public static void main(String[] args) throws JsonProcessingException {
+        ObjectMapper objectMapper = new ObjectMapper();
+        User user = new User("rohityadav85", "Rohit", "Yadav", Arrays.asList(new String[]{"Indian", "Chinese"}));
+        System.out.println(objectMapper.writeValueAsString(user));
+
+
     }
 }
